@@ -1,0 +1,17 @@
+{
+  "name": "circlegame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "author": "Serhiy Yashchuk",
+  "license": "ISC",
+  "dependencies": {
+    "ts-loader": "^1.0.0",
+    "typescript": "^2.0.7",
+    "webpack": "^1.13.3"
+  }
+}
