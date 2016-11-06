@@ -1,5 +1,6 @@
 interface Shape {
-    draw(): void;
+    draw(ctx: CanvasRenderingContext2D): void;
+    update(): void;
     x: number;
     y: number;
     color: string;
