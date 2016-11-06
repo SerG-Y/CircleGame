@@ -11,13 +11,7 @@ export default class Player extends Circle {
         this.mouseHandler = new MouseHandler(document);
     }
 
-    public draw(ctx: CanvasRenderingContext2D): void {
-        ctx.save();
-        ctx.beginPath();
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = this.lineWidth;
-
-        //to make player follow the mouse
+    public update(): void {
         if(this.mouseHandler.isMouseIn() && !this.isMouseOnPlayer()) {
             let mousePosition = this.mouseHandler.getPosition();
             let dx = mousePosition.x - this.x;
@@ -25,22 +19,15 @@ export default class Player extends Circle {
 
             let dist = Math.sqrt((dx * dx) + (dy * dy));
 
-
             let newVelX = (dx / dist) * this.speed;
             let newVelY = (dy / dist) * this.speed;
 
             this.x += newVelX;
             this.y += newVelY;
         }
-
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
     }
 
-    private isMouseOnPlayer() {
+    private isMouseOnPlayer(): boolean {
         let mousePosition = this.mouseHandler.getPosition();
 
         return mousePosition.x <= this.x + this.radius && mousePosition.y <= this.y + this.radius
